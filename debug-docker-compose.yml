@@ -1,0 +1,10 @@
+version: '3'
+services:
+  pytorch-app-debug:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+      - "5678:5678"
+    command: ["python", "-m", "debugpy", "--listen", "0.0.0.0:5678", "--wait-for-client", "app.py", "debug"]
